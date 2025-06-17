@@ -7,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
+import { Home, BarChart3, Briefcase, LogOut } from 'lucide-react';
 
 interface LogoProps {
   src: string;
@@ -32,21 +33,21 @@ export const Logo: React.FC<LogoProps> = ({
           </div>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 bg-white border border-gray-200 shadow-lg z-50">
-        <DropdownMenuItem className="cursor-pointer hover:bg-gray-100">
-          Dashboard
+      <DropdownMenuContent className="w-48 bg-black border border-gray-700 shadow-lg z-50 p-2">
+        <DropdownMenuItem className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md mb-2 flex items-center gap-3">
+          <Home className="w-5 h-5" />
+          <span className="text-base">Home</span>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer hover:bg-gray-100">
-          Agent Management
+        <DropdownMenuItem className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md mb-2 flex items-center gap-3">
+          <BarChart3 className="w-5 h-5" />
+          <span className="text-base">Dashboard</span>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer hover:bg-gray-100">
-          Reports
+        <DropdownMenuItem className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md mb-2 flex items-center gap-3">
+          <Briefcase className="w-5 h-5" />
+          <span className="text-base">Agents</span>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer hover:bg-gray-100">
-          Settings
-        </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer hover:bg-gray-100">
-          Help & Support
+        <DropdownMenuItem className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md flex items-center gap-3">
+          <LogOut className="w-5 h-5" />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

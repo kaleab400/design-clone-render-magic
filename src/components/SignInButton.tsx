@@ -88,10 +88,12 @@ export const SignInButton: React.FC<SignInButtonProps> = ({
     return (
       <Button
         onClick={handleLogout}
-        className={`bg-red-600 hover:bg-red-700 text-white text-[45px] font-normal px-[18px] py-3 h-auto flex items-center gap-[17px] max-md:text-[40px] ${className}`}
+        className={`bg-red-600 hover:bg-red-700 text-white text-[45px] font-normal px-[18px] py-3 h-auto flex items-center gap-[17px] max-md:text-[40px] whitespace-nowrap overflow-hidden ${className}`}
         size="lg"
       >
-        <span className="basis-auto max-md:text-[40px]">Sign Out ({user.name})</span>
+        <span className="basis-auto max-md:text-[40px] truncate">
+          Sign Out ({user.name.split(' ')[0]})
+        </span>
       </Button>
     );
   }

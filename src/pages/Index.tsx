@@ -1,6 +1,15 @@
+
 import React from "react";
 import { Header } from "@/components/Header";
+import { useNavigate } from "react-router-dom";
+
 const Index = () => {
+  const navigate = useNavigate();
+
+  const handleViewAgents = () => {
+    navigate('/agents');
+  };
+
   return <div className="bg-white overflow-hidden pb-[847px] max-md:pb-[100px]">
       <Header logoSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/3d85cb00c9fa35f88e271b532f29214f079b3909?placeholderIfAbsent=true" signInIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/dfeb82aba03abd0168f1d3ca52c24e3a5144d773?placeholderIfAbsent=true" title="AI-DU Agent Portal" />
       
@@ -20,12 +29,17 @@ const Index = () => {
               <button className="bg-[#098BD1] hover:bg-[#0776b8] text-white px-6 py-3 rounded-lg transition-colors font-medium">
                 View Dashboard
               </button>
-              <button className="border border-gray-300 hover:bg-gray-50 text-gray-700 px-6 py-3 rounded-lg transition-colors font-medium">View Agents
-            </button>
+              <button 
+                onClick={handleViewAgents}
+                className="border border-gray-300 hover:bg-gray-50 text-gray-700 px-6 py-3 rounded-lg transition-colors font-medium"
+              >
+                View Agents
+              </button>
             </div>
           </div>
         </section>
       </main>
     </div>;
 };
+
 export default Index;

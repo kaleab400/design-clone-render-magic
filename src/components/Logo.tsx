@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Home, BarChart3, Briefcase, LogOut } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface LogoProps {
   src: string;
@@ -20,6 +21,16 @@ export const Logo: React.FC<LogoProps> = ({
   alt = "AI-DU Logo", 
   className = "" 
 }) => {
+  const navigate = useNavigate();
+
+  const handleAgentsClick = () => {
+    navigate('/agents');
+  };
+
+  const handleHomeClick = () => {
+    navigate('/');
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -34,7 +45,10 @@ export const Logo: React.FC<LogoProps> = ({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48 bg-black border border-gray-700 shadow-lg z-50 p-2">
-        <DropdownMenuItem className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md mb-2 flex items-center gap-3">
+        <DropdownMenuItem 
+          className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md mb-2 flex items-center gap-3"
+          onClick={handleHomeClick}
+        >
           <Home className="w-5 h-5" />
           <span className="text-base">Home</span>
         </DropdownMenuItem>
@@ -42,7 +56,10 @@ export const Logo: React.FC<LogoProps> = ({
           <BarChart3 className="w-5 h-5" />
           <span className="text-base">Dashboard</span>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md mb-2 flex items-center gap-3">
+        <DropdownMenuItem 
+          className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md mb-2 flex items-center gap-3"
+          onClick={handleAgentsClick}
+        >
           <Briefcase className="w-5 h-5" />
           <span className="text-base">Agents</span>
         </DropdownMenuItem>

@@ -5,10 +5,12 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
-import { Home, BarChart3, Briefcase, LogOut } from 'lucide-react';
+import { Home, BarChart3, Briefcase, LogOut, Plus, Edit, Trash2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface LogoProps {
   src: string;
@@ -22,6 +24,7 @@ export const Logo: React.FC<LogoProps> = ({
   className = "" 
 }) => {
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
 
   const handleAgentsClick = () => {
     navigate('/agents');
@@ -34,6 +37,29 @@ export const Logo: React.FC<LogoProps> = ({
   const handleHomeClick = () => {
     navigate('/');
   };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+  const handleAddAgents = () => {
+    console.log('Add agents functionality');
+    // TODO: Implement add agents functionality
+  };
+
+  const handleModifyAgents = () => {
+    console.log('Modify agents functionality');
+    // TODO: Implement modify agents functionality
+  };
+
+  const handleDeleteAgents = () => {
+    console.log('Delete agents functionality');
+    // TODO: Implement delete agents functionality
+  };
+
+  const canAddModify = user?.role === 'admin' || user?.role === 'superadmin';
+  const canDelete = user?.role === 'superadmin';
 
   return (
     <DropdownMenu>
@@ -75,9 +101,49 @@ export const Logo: React.FC<LogoProps> = ({
           <Briefcase className="w-5 h-5" />
           <span className="text-base">Agents</span>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md flex items-center gap-3">
-          <LogOut className="w-5 h-5" />
-        </DropdownMenuItem>
+        
+        {canAddModify && (
+          <>
+            <DropdownMenuSeparator className="bg-gray-600" />
+            <DropdownMenuItem 
+              className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md mb-2 flex items-center gap-3"
+              onClick={handleAddAgents}
+            >
+              <Plus className="w-5 h-5" />
+              <span className="text-base">Add Agents</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem 
+              className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md mb-2 flex items-center gap-3"
+              onClick={handleModifyAgents}
+            >
+              <Edit className="w-5 h-5" />
+              <span className="text-base">Modify Agents</span>
+            </DropdownMenuItem>
+          </>
+        )}
+        
+        {canDelete && (
+          <DropdownMenuItem 
+            className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md mb-2 flex items-center gap-3 hover:bg-red-800"
+            onClick={handleDeleteAgents}
+          >
+            <Trash2 className="w-5 h-5" />
+            <span className="text-base">Delete Agents</span>
+          </DropdownMenuItem>
+        )}
+        
+        {user && (
+          <>
+            <DropdownMenuSeparator className="bg-gray-600" />
+            <DropdownMenuItem 
+              className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md flex items-center gap-3"
+              onClick={handleLogout}
+            >
+              <LogOut className="w-5 h-5" />
+              <span className="text-base">Sign Out</span>
+            </DropdownMenuItem>
+          </>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );

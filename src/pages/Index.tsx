@@ -9,6 +9,10 @@ const Index = () => {
   const handleViewAgents = () => {
     navigate('/agents');
   };
+  
+  const handleViewDashboard = () => {
+    navigate('/dashboard');
+  };
 
   return <div className="bg-white overflow-hidden pb-[847px] max-md:pb-[100px]">
       <Header logoSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/3d85cb00c9fa35f88e271b532f29214f079b3909?placeholderIfAbsent=true" signInIconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/dfeb82aba03abd0168f1d3ca52c24e3a5144d773?placeholderIfAbsent=true" title="AI-DU Agent Portal" />
@@ -26,7 +30,10 @@ const Index = () => {
           <div className="mt-12 p-6 bg-gray-50 rounded-lg max-w-2xl mx-auto">
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Quick Actions</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <button className="bg-[#098BD1] hover:bg-[#0776b8] text-white px-6 py-3 rounded-lg transition-colors font-medium">
+              <button 
+                onClick={handleViewDashboard}
+                className="bg-[#098BD1] hover:bg-[#0776b8] text-white px-6 py-3 rounded-lg transition-colors font-medium"
+              >
                 View Dashboard
               </button>
               <button 

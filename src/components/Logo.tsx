@@ -27,6 +27,10 @@ export const Logo: React.FC<LogoProps> = ({
     navigate('/agents');
   };
 
+  const handleDashboardClick = () => {
+    navigate('/dashboard');
+  };
+
   const handleHomeClick = () => {
     navigate('/');
   };
@@ -44,7 +48,12 @@ export const Logo: React.FC<LogoProps> = ({
           </div>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-48 bg-black border border-gray-700 shadow-lg z-50 p-2">
+      <DropdownMenuContent 
+        className="w-48 bg-black border border-gray-700 shadow-lg z-50 p-2 min-h-[calc(100vh-120px)]"
+        align="start"
+        side="bottom"
+        sideOffset={5}
+      >
         <DropdownMenuItem 
           className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md mb-2 flex items-center gap-3"
           onClick={handleHomeClick}
@@ -52,7 +61,10 @@ export const Logo: React.FC<LogoProps> = ({
           <Home className="w-5 h-5" />
           <span className="text-base">Home</span>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md mb-2 flex items-center gap-3">
+        <DropdownMenuItem 
+          className="cursor-pointer hover:bg-gray-800 text-white p-3 rounded-md mb-2 flex items-center gap-3"
+          onClick={handleDashboardClick}
+        >
           <BarChart3 className="w-5 h-5" />
           <span className="text-base">Dashboard</span>
         </DropdownMenuItem>
